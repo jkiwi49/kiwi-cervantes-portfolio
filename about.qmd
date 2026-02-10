@@ -2,8 +2,4 @@
 title: "About"
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+Hi I am Kiwi Cervantes, I am a senior year kinesiology major with a statistics minor. I am taking stats 210 as part of my minor.
