@@ -2,6 +2,16 @@
 
 ---
 title: "kiwi-cervantes-portfolio"
+about:
+  template: jolla
+  image: 
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jacob-cervantes/
+    - icon: github
+      text: Github
+      href: https://github.com/jkiwi49
 ---
 
 This is a Quarto website.
