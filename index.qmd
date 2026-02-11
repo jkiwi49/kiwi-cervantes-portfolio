@@ -14,10 +14,6 @@ about:
       href: https://github.com/jkiwi49
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
+```         
+Judith Canner is a Professor of Statistics and Chair of the Department of Mathematics and Statistics at [California State University, Monterey Bay](http://csumb.edu/mathstat).  ## Education  Shippensburg University | Shippensburg, PA   B.S. in Applied Mathematics | 2001 - 2004
 ```
