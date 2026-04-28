@@ -12,7 +12,8 @@ about:
 ---
 
 ```         
-Kiwi Cervantes is a Graduating Kinesiology student at [California State University, Monterey Bay]. They have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University.
+Kiwi Cervantes is a Graduating Kinesiology student at [California State University, Monterey Bay]. 
+They have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University.
 
 ## Education
 

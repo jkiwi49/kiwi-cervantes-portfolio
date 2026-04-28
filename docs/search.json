@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "kiwi-cervantes-portfolio",
+    "section": "",
+    "text": "Kiwi Cervantes is a Graduating Kinesiology student at [California State University, Monterey Bay]. \nThey have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University.\n## Education\nCalifornia State Monterey Bay | Marina, CA  \nB.S. in Kinesiology | 2023 - 20026\n## Experience\nCSUMB Cooperative Learning Center | Anatomy & Physiology Tutor | August 2025 - present"
+  },
+  {
+    "objectID": "part_1.html",
+    "href": "part_1.html",
+    "title": "part_1",
+    "section": "",
+    "text": "Data Description\nIdentify your data source.\n\nObservational collected data from local Monterey and CSUMB Esports tournaments, CSUMB library, and other non-random methods. Subjects voluntarily participated in a Purdue Pegboard test to measure dexterity, Psytool kit tests to assess simple reaction time, Go/No go test for impulsivity, and Poesner Cueing test for spatial orientation. Additionally, participants responded to a questionnaire describing hours of sleep per week, caffeine intake, and other items of interest.\n\nDescribe your data, including variables and data types.\n\nHealth and Lifestyle: Sex - Male or Female\nAge_years Gaming_hr_week_ratio - Hours per week gaming Caffeine_Intake_mg_d - Reported caffeine intake (mg) per day Sleep_hrs - Typical hours of sleep per night Exercise_hours_week - Hours per week exercising Difference (Actual mean - Practice mean) of Cognitive measure test in milliseconds (ms): SR_ROC_Mean_RT - Simple Reaction test ROC_Mean_Go_RT - Go/No Go test ROC_Mean_Valid_Cue_RT_ms - Poesner Cueing test (valid cue) PP_ROC_Building_Test - Purdue Pegboard test Level of Gaming/Type: Gaming (measured as Non-Gamer, Casual-SB, Elite-SB, FPS, MOBA) Abbreviations: SB (Super Smash Bros Ultimate), FPS (First Person Shooter), MOBA (multiplayer online battle arena)\n\nIdentify the research questions you want to answer.\n\nDoes manual dexterity differ by amount of caffeine intake? Does manual dexterity differ by average hours a week exercising? Is manual dexterity influenced by simple reaction time?\n\nData Visualization\nWhat do you want your final visualizations to look like?\n\nI want a scatterplot for the relation between simple reaction time and dexterity, and side by side bar plots and violin plots to compare between games and skills\n\nWhat do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?\n\nI plan to highlight the different games that are included, I will do this by assigning each game a different color to keep comparisons cohesive and easy to follow.\n\nWhat is missing from your data or would need to change in your data to create these visualizations?\n\nI would need to get rid of nas, and combine different sheets into one big file.\n\nData Cleaning\nThe answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.\nDo you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?\n\nYes some variables need to have parts of their information to make analyses possible\n\nDo you need to deal with any missing data, especially missing data coded other than NA?\n\nYes, missing data and rows\n\nDo you need to filter your data? How?\n\nOther than removing data no\n\nDo you need to create any new variables? What variables? How?\n\nNo\n\nDo you need to add new data (join) to your data? What data? How?\\\n\nNot from anything that isn’t already included\n\nDo you need pivot your data in any way? Why? How?\n\nNo\n\nDo you need to summarize any of the variables? Which ones? How?\n\nNo\n\nWhat other aspects of your data need to be “fixed” in order to make your data visualizations?\n\nI need to join data points from different sheets in order have it all on one page\n\nMost will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.\nAre there any variables you can exclude from your data?\n\nYes there are some unnecessary variables in this dataset."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi I am Kiwi Cervantes, I am a senior year kinesiology major with a statistics minor. I am taking stats 210 as part of my minor."
+  }
+]
