@@ -1,0 +1,67 @@
+---
+title: "part_2"
+format: html
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(janitor)
+ 
+```
+
+```{r}
+#| label: data-read-in
+dc<-read_csv("data_raw/Esports Study Data - Data Collection.csv", skip=2)
+pc<-read_csv("data_raw/Esports Study Data - Participant Contact.csv", skip=3)
+pc <- pc |>
+  clean_names()
+dc <- dc |>
+  clean_names()
+```
+```{r}
+#|label: clean-data
+
+junk <- c( #filter for rows
+  "Code", "ID Participant Code", "% of total",
+  "Mean", "SD", "EM",
+  "Casual SSBU", "Elite SSBU", "Comp SSBU",
+  "MOBA", "FPS")
+
+drop_cols <- c( #the filter for columns
+  "participant_name",
+  "email",
+  "phone_number",
+  "date_for_follow_up_by")
+
+dc_clean <- dc |> #cleans data collection
+  filter(
+    !is.na(code),
+    !code %in% junk,
+    !str_detect(code, "^(MOBA|FPS)$")) # only exact MOBA and FPS without numbers after
+
+pc_clean <- pc |> #cleans participant contact
+  filter(
+    !is.na(id_participant_code),
+    !id_participant_code %in% junk,
+    !str_detect(id_participant_code, "^(MOBA|FPS)$"))
+
+joined <- inner_join( #joins data as long as the match 
+  pc_clean,
+  dc_clean,
+  by = c("id_participant_code" = "code"))
+
+joined <- joined |>
+  select(
+    1:which(names(joined) == "delta_building_test"),
+    -matches("^x\\d+$"),
+    -any_of(drop_cols)
+  )
+```
+
+```{r}
+#|label: save_and_read_data
+write.csv(joined, "data_clean/clean_data.csv", row.names = FALSE)
+read_csv("data_clean/clean_data.csv")
+```
+
