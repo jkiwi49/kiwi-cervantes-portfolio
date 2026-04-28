@@ -112,6 +112,6 @@ ggplot(clean_data, aes(x = actual_mean_rt_ms, y = actual_building_test_score, co
     y = "Building Test Score",
     fill = "Dominant Hand"
   ) +
-  geom_smooth(method="lm", se=FALSE)
+  geom_smooth(method="lm", se=FALSE)+
   theme_minimal()
 ```
