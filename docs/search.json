@@ -25,6 +25,6 @@
     "href": "part_2.html",
     "title": "part_2",
     "section": "",
-    "text": "Data Cleaning\nCleaning the data\n\nRow Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.\nData Joining: Merged two datasets using participant IDs to combine behavioral and demographic information.\nColumn Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.\n\n\n\n\n\n\nScatterplot of Dexterity by Cognition"
+    "text": "Data Cleaning\nCleaning the data\n\nRow Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.\nData Joining: Merged two data sets using participant IDs to combine behavioral and demographic information.\nColumn Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.\n\n\n\n\n\n\nScatterplot of Dexterity by Cognition"
   }
 ]
