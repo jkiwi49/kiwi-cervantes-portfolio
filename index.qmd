@@ -1,10 +1,7 @@
 ---
-
----
 title: "kiwi-cervantes-portfolio"
 about:
   template: jolla
-  image: 
   links:
     - icon: linkedin
       text: LinkedIn
@@ -15,5 +12,14 @@ about:
 ---
 
 ```         
-Judith Canner is a Professor of Statistics and Chair of the Department of Mathematics and Statistics at [California State University, Monterey Bay](http://csumb.edu/mathstat).  ## Education  Shippensburg University | Shippensburg, PA   B.S. in Applied Mathematics | 2001 - 2004
+Kiwi Cervantes is a Graduating Kinesiology student at [California State University, Monterey Bay]. They have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University.
+
+## Education
+
+California State Monterey Bay | Marina, CA  
+B.S. in Kinesiology | 2023 - 20026
+
+## Experience
+
+CSUMB Cooperative Learning Center | Anatomy & Physiology Tutor | August 2025 - present
 ```
