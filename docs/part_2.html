@@ -262,67 +262,479 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"participant_name"</span>,</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"email"</span>,</span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"phone_number"</span>,</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"date_for_follow_up_by"</span>)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>dc_clean <span class="ot">&lt;-</span> dc <span class="sc">|&gt;</span> <span class="co">#cleans data collection</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(code),</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>code <span class="sc">%in%</span> junk,</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">str_detect</span>(code, <span class="st">"^(MOBA|FPS)$"</span>)) <span class="co"># only exact MOBA and FPS without numbers after</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>pc_clean <span class="ot">&lt;-</span> pc <span class="sc">|&gt;</span> <span class="co">#cleans participant contact</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(id_participant_code),</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>id_participant_code <span class="sc">%in%</span> junk,</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">str_detect</span>(id_participant_code, <span class="st">"^(MOBA|FPS)$"</span>))</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">inner_join</span>( <span class="co">#joins data as long as the match </span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  pc_clean,</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  dc_clean,</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id_participant_code"</span> <span class="ot">=</span> <span class="st">"code"</span>))</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> joined <span class="sc">|&gt;</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span><span class="sc">:</span><span class="fu">which</span>(<span class="fu">names</span>(joined) <span class="sc">==</span> <span class="st">"delta_building_test"</span>),</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">matches</span>(<span class="st">"^x</span><span class="sc">\\</span><span class="st">d+$"</span>),</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">any_of</span>(drop_cols)</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"date_for_follow_up_by"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"m_f"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sbp_mm_hg"</span>, </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dbp_mm_hg"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"vo2peak_ml_kg_min"</span>, </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"day_1_pro_g"</span>, </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean_pro_kg"</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"day_1_cho_g"</span>, </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean_cho_kg"</span>, </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"day_1_fat_g"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean_fat_kg"</span>, </span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"day_1_fiber_g"</span>, </span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fiber_kg"</span>,</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"total_kcal"</span>, </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"total_kcal_kg"</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>dc_clean <span class="ot">&lt;-</span> dc <span class="sc">|&gt;</span> <span class="co">#cleans data collection</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(code),</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>code <span class="sc">%in%</span> junk,</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">str_detect</span>(code, <span class="st">"^(MOBA|FPS)$"</span>)) <span class="co"># only exact MOBA and FPS without numbers after</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>pc_clean <span class="ot">&lt;-</span> pc <span class="sc">|&gt;</span> <span class="co">#cleans participant contact</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(id_participant_code),</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>id_participant_code <span class="sc">%in%</span> junk,</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">str_detect</span>(id_participant_code, <span class="st">"^(MOBA|FPS)$"</span>))</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">inner_join</span>( <span class="co">#joins data as long as the match </span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>  pc_clean,</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>  dc_clean,</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id_participant_code"</span> <span class="ot">=</span> <span class="st">"code"</span>))</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> joined <span class="sc">|&gt;</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rename m_f to standardize to F / M</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">grepl</span>(<span class="st">"^f"</span>, m_f, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>      <span class="fu">grepl</span>(<span class="st">"^m"</span>, m_f, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>),</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Standardize dominant_hand to R / L / Ambi</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">dominant_hand =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(dominant_hand, <span class="fu">regex</span>(<span class="st">"^r"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">"R"</span>,</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(dominant_hand, <span class="fu">regex</span>(<span class="st">"^l"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">"L"</span>,</span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>))<span class="sc">|&gt;</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">matches</span>(<span class="st">"^x</span><span class="sc">\\</span><span class="st">d+$"</span>),</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">any_of</span>(drop_cols))<span class="sc">|&gt;</span></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dominant_hand), <span class="sc">!</span><span class="fu">is.na</span>(sex))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: save_and_read_data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(joined, <span class="st">"data_clean/clean_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data_clean/clean_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data_clean/clean_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 173 Columns: 67
+<pre><code>Rows: 110 Columns: 67
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr  (5): id_participant_code, m_f, dominant_hand, corrective_eyewear, notes
+chr  (5): id_participant_code, dominant_hand, corrective_eyewear, notes, sex
 dbl (62): number_below_200ms, number_below_100ms, age_y, weight_lbs, weight_...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+</div>
+<p>Data Cleaning</p>
+<pre><code>Cleaning the data</code></pre>
+<blockquote class="blockquote">
+<p>Row Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.</p>
+<p>Data Joining: Merged two datasets using participant IDs to combine behavioral and demographic information.</p>
+<p>Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.</p>
+</blockquote>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: making_visualization</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clean_data, <span class="fu">aes</span>(<span class="at">x =</span> actual_mean_rt_ms, <span class="at">y =</span> actual_building_test_score, <span class="at">color =</span> sex, <span class="at">shape =</span> sex)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Dexterity Scores by Cognition Score and Sex "</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Mean Simple Reaction Time"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Building Test Score"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Dominant Hand"</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Ignoring unknown labels:
+• fill : "Dominant Hand"
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 11 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="part_2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 173 × 67
-   id_participant_code m_f                dominant_hand corrective_eyewear notes
-   &lt;chr&gt;               &lt;chr&gt;              &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;
- 1 NG1                 Female             R             Yes for strain     BC   
- 2 NG2                 Female             R             near sighted       PCOS…
- 3 NG3                 Female             R             near sighted       aths…
- 4 NG4                 Female             R             no                 Nails
- 5 NG5                 Female (non-binar… R             Near-sighted cont… Sert…
- 6 NG6                 Female             R             no                 Live…
- 7 NG7                 Female             R             yes ; near sighted Far-…
- 8 NG8                 Female             R             &lt;NA&gt;               &lt;NA&gt; 
- 9 NG9                 Female             R             no                 &lt;NA&gt; 
-10 NG10                Female             R             Yes; near sighted  &lt;NA&gt; 
-# ℹ 163 more rows
-# ℹ 62 more variables: number_below_200ms &lt;dbl&gt;, number_below_100ms &lt;dbl&gt;,
-#   age_y &lt;dbl&gt;, weight_lbs &lt;dbl&gt;, weight_kg &lt;dbl&gt;, gaming_hr_week &lt;dbl&gt;,
-#   caffeine_intake_mg_d &lt;dbl&gt;, sleep_hours_night &lt;dbl&gt;,
-#   exercise_hours_week &lt;dbl&gt;, rhr_bpm &lt;dbl&gt;, practice_peak_rt_ms &lt;dbl&gt;,
-#   practice_mean_rt_ms &lt;dbl&gt;, actual_peak_rt_ms &lt;dbl&gt;,
-#   actual_mean_rt_ms &lt;dbl&gt;, delta_mean_rt &lt;dbl&gt;, …</code></pre>
+<pre><code>&lt;theme&gt; List of 144
+ $ line                            : &lt;ggplot2::element_line&gt;
+  ..@ colour       : chr "black"
+  ..@ linewidth    : num 0.5
+  ..@ linetype     : num 1
+  ..@ lineend      : chr "butt"
+  ..@ linejoin     : chr "round"
+  ..@ arrow        : logi FALSE
+  ..@ arrow.fill   : chr "black"
+  ..@ inherit.blank: logi TRUE
+ $ rect                            : &lt;ggplot2::element_rect&gt;
+  ..@ fill         : chr "white"
+  ..@ colour       : chr "black"
+  ..@ linewidth    : num 0.5
+  ..@ linetype     : num 1
+  ..@ linejoin     : chr "round"
+  ..@ inherit.blank: logi TRUE
+ $ text                            : &lt;ggplot2::element_text&gt;
+  ..@ family       : chr ""
+  ..@ face         : chr "plain"
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : chr "black"
+  ..@ size         : num 11
+  ..@ hjust        : num 0.5
+  ..@ vjust        : num 0.5
+  ..@ angle        : num 0
+  ..@ lineheight   : num 0.9
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 0
+  ..@ debug        : logi FALSE
+  ..@ inherit.blank: logi TRUE
+ $ title                           : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : NULL
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ point                           : &lt;ggplot2::element_point&gt;
+  ..@ colour       : chr "black"
+  ..@ shape        : num 19
+  ..@ size         : num 1.5
+  ..@ fill         : chr "white"
+  ..@ stroke       : num 0.5
+  ..@ inherit.blank: logi TRUE
+ $ polygon                         : &lt;ggplot2::element_polygon&gt;
+  ..@ fill         : chr "white"
+  ..@ colour       : chr "black"
+  ..@ linewidth    : num 0.5
+  ..@ linetype     : num 1
+  ..@ linejoin     : chr "round"
+  ..@ inherit.blank: logi TRUE
+ $ geom                            : &lt;ggplot2::element_geom&gt;
+  ..@ ink        : chr "black"
+  ..@ paper      : chr "white"
+  ..@ accent     : chr "#3366FF"
+  ..@ linewidth  : num 0.5
+  ..@ borderwidth: num 0.5
+  ..@ linetype   : int 1
+  ..@ bordertype : int 1
+  ..@ family     : chr ""
+  ..@ fontsize   : num 3.87
+  ..@ pointsize  : num 1.5
+  ..@ pointshape : num 19
+  ..@ colour     : NULL
+  ..@ fill       : NULL
+ $ spacing                         : 'simpleUnit' num 5.5points
+  ..- attr(*, "unit")= int 8
+ $ margins                         : &lt;ggplot2::margin&gt; num [1:4] 5.5 5.5 5.5 5.5
+ $ aspect.ratio                    : NULL
+ $ axis.title                      : NULL
+ $ axis.title.x                    : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : num 1
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.75 0 0 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.title.x.top                : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : num 0
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.75 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.title.x.bottom             : NULL
+ $ axis.title.y                    : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : num 1
+  ..@ angle        : num 90
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.75 0 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.title.y.left               : NULL
+ $ axis.title.y.right              : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : num 1
+  ..@ angle        : num -90
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.75
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text                       : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : chr "#4D4D4DFF"
+  ..@ size         : 'rel' num 0.8
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : NULL
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.x                     : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : num 1
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.2 0 0 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.x.top                 : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 4.95 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.x.bottom              : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 4.95 0 0 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.y                     : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : num 1
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.y.left                : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 4.95 0 0
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.y.right               : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 4.95
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.text.theta                 : NULL
+ $ axis.text.r                     : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : num 0.5
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 2.2
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ axis.ticks                      : &lt;ggplot2::element_blank&gt;
+ $ axis.ticks.x                    : NULL
+ $ axis.ticks.x.top                : NULL
+ $ axis.ticks.x.bottom             : NULL
+ $ axis.ticks.y                    : NULL
+ $ axis.ticks.y.left               : NULL
+ $ axis.ticks.y.right              : NULL
+ $ axis.ticks.theta                : NULL
+ $ axis.ticks.r                    : NULL
+ $ axis.minor.ticks.x.top          : NULL
+ $ axis.minor.ticks.x.bottom       : NULL
+ $ axis.minor.ticks.y.left         : NULL
+ $ axis.minor.ticks.y.right        : NULL
+ $ axis.minor.ticks.theta          : NULL
+ $ axis.minor.ticks.r              : NULL
+ $ axis.ticks.length               : 'rel' num 0.5
+ $ axis.ticks.length.x             : NULL
+ $ axis.ticks.length.x.top         : NULL
+ $ axis.ticks.length.x.bottom      : NULL
+ $ axis.ticks.length.y             : NULL
+ $ axis.ticks.length.y.left        : NULL
+ $ axis.ticks.length.y.right       : NULL
+ $ axis.ticks.length.theta         : NULL
+ $ axis.ticks.length.r             : NULL
+ $ axis.minor.ticks.length         : 'rel' num 0.75
+ $ axis.minor.ticks.length.x       : NULL
+ $ axis.minor.ticks.length.x.top   : NULL
+ $ axis.minor.ticks.length.x.bottom: NULL
+ $ axis.minor.ticks.length.y       : NULL
+ $ axis.minor.ticks.length.y.left  : NULL
+ $ axis.minor.ticks.length.y.right : NULL
+ $ axis.minor.ticks.length.theta   : NULL
+ $ axis.minor.ticks.length.r       : NULL
+ $ axis.line                       : &lt;ggplot2::element_blank&gt;
+ $ axis.line.x                     : NULL
+ $ axis.line.x.top                 : NULL
+ $ axis.line.x.bottom              : NULL
+ $ axis.line.y                     : NULL
+ $ axis.line.y.left                : NULL
+ $ axis.line.y.right               : NULL
+ $ axis.line.theta                 : NULL
+ $ axis.line.r                     : NULL
+ $ legend.background               : &lt;ggplot2::element_blank&gt;
+ $ legend.margin                   : NULL
+ $ legend.spacing                  : 'rel' num 2
+ $ legend.spacing.x                : NULL
+ $ legend.spacing.y                : NULL
+ $ legend.key                      : &lt;ggplot2::element_blank&gt;
+ $ legend.key.size                 : 'simpleUnit' num 1.2lines
+  ..- attr(*, "unit")= int 3
+ $ legend.key.height               : NULL
+ $ legend.key.width                : NULL
+ $ legend.key.spacing              : NULL
+ $ legend.key.spacing.x            : NULL
+ $ legend.key.spacing.y            : NULL
+ $ legend.key.justification        : NULL
+ $ legend.frame                    : NULL
+ $ legend.ticks                    : NULL
+ $ legend.ticks.length             : 'rel' num 0.2
+ $ legend.axis.line                : NULL
+ $ legend.text                     : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : 'rel' num 0.8
+  ..@ hjust        : NULL
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : NULL
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ legend.text.position            : NULL
+ $ legend.title                    : &lt;ggplot2::element_text&gt;
+  ..@ family       : NULL
+  ..@ face         : NULL
+  ..@ italic       : chr NA
+  ..@ fontweight   : num NA
+  ..@ fontwidth    : num NA
+  ..@ colour       : NULL
+  ..@ size         : NULL
+  ..@ hjust        : num 0
+  ..@ vjust        : NULL
+  ..@ angle        : NULL
+  ..@ lineheight   : NULL
+  ..@ margin       : NULL
+  ..@ debug        : NULL
+  ..@ inherit.blank: logi TRUE
+ $ legend.title.position           : NULL
+ $ legend.position                 : chr "right"
+ $ legend.position.inside          : NULL
+ $ legend.direction                : NULL
+ $ legend.byrow                    : NULL
+ $ legend.justification            : chr "center"
+ $ legend.justification.top        : NULL
+ $ legend.justification.bottom     : NULL
+ $ legend.justification.left       : NULL
+ $ legend.justification.right      : NULL
+ $ legend.justification.inside     : NULL
+  [list output truncated]
+ @ complete: logi TRUE
+ @ validate: logi TRUE</code></pre>
 </div>
 </div>
 

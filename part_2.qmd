@@ -19,6 +19,7 @@ pc <- pc |>
 dc <- dc |>
   clean_names()
 ```
+
 ```{r}
 #|label: clean-data
 
@@ -32,7 +33,21 @@ drop_cols <- c( #the filter for columns
   "participant_name",
   "email",
   "phone_number",
-  "date_for_follow_up_by")
+  "date_for_follow_up_by",
+  "m_f",
+  "sbp_mm_hg", 
+  "dbp_mm_hg",
+  "vo2peak_ml_kg_min", 
+  "day_1_pro_g", 
+  "mean_pro_kg",
+  "day_1_cho_g", 
+  "mean_cho_kg", 
+  "day_1_fat_g",
+  "mean_fat_kg", 
+  "day_1_fiber_g", 
+  "fiber_kg",
+  "total_kcal", 
+  "total_kcal_kg")
 
 dc_clean <- dc |> #cleans data collection
   filter(
@@ -52,16 +67,51 @@ joined <- inner_join( #joins data as long as the match
   by = c("id_participant_code" = "code"))
 
 joined <- joined |>
+  mutate(
+    # Rename m_f to standardize to F / M
+    sex = case_when(
+      grepl("^f", m_f, ignore.case = TRUE) ~ "F",
+      grepl("^m", m_f, ignore.case = TRUE) ~ "M",
+      TRUE ~ NA_character_),
+    # Standardize dominant_hand to R / L / Ambi
+    dominant_hand = case_when(
+      str_detect(dominant_hand, regex("^r", ignore_case = TRUE)) ~ "R",
+      str_detect(dominant_hand, regex("^l", ignore_case = TRUE)) ~ "L",
+      TRUE ~ NA_character_))|>
   select(
-    1:which(names(joined) == "delta_building_test"),
     -matches("^x\\d+$"),
-    -any_of(drop_cols)
-  )
+    -any_of(drop_cols))|>
+  filter(!is.na(dominant_hand), !is.na(sex))
 ```
 
 ```{r}
 #|label: save_and_read_data
 write.csv(joined, "data_clean/clean_data.csv", row.names = FALSE)
-read_csv("data_clean/clean_data.csv")
+clean_data <- read_csv("data_clean/clean_data.csv")
 ```
 
+Data Cleaning
+
+```         
+Cleaning the data
+```
+
+> Row Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.
+>
+> Data Joining: Merged two datasets using participant IDs to combine behavioral and demographic information.
+>
+> Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.
+
+```{r}
+#|label: making_visualization
+ggplot(clean_data, aes(x = actual_mean_rt_ms, y = actual_building_test_score, color = sex, shape = sex)) +
+  geom_point() +
+  labs(
+    title = "Dexterity Scores by Cognition Score and Sex ",
+    x = "Mean Simple Reaction Time",
+    y = "Building Test Score",
+    fill = "Dominant Hand"
+  ) +
+  geom_smooth(method="lm", se=FALSE)
+  theme_minimal()
+```
