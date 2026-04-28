@@ -1,10 +1,15 @@
 ---
 title: "part_2"
 format: html
+execute:
+ echo: false
+ warning: false
+embed-resources: true
 ---
 
 ```{r}
 #| label: setup
+
 library(tidyverse)
 library(janitor)
  
@@ -21,7 +26,7 @@ dc <- dc |>
 ```
 
 ```{r}
-#|label: clean-data
+#| label: clean-data
 
 junk <- c( #filter for rows
   "Code", "ID Participant Code", "% of total",
@@ -85,7 +90,7 @@ joined <- joined |>
 ```
 
 ```{r}
-#|label: save_and_read_data
+#| label: save_and_read_data
 write.csv(joined, "data_clean/clean_data.csv", row.names = FALSE)
 clean_data <- read_csv("data_clean/clean_data.csv")
 ```
@@ -103,15 +108,15 @@ Cleaning the data
 > Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.
 
 ```{r}
-#|label: making_visualization
+#| label: making_visualization
+#| fig-alt: "Scatterplot of Dexterity Building Test scores on the y axis by simple reaction time on the x axis, there are two line of best fits, one for each sex. The two lines are also colored by sex as well as the datapoints being a different shape for each sex"
+#| fig-cap: "Scatterplot of Dexterity by Cognition"
 ggplot(clean_data, aes(x = actual_mean_rt_ms, y = actual_building_test_score, color = sex, shape = sex)) +
   geom_point() +
   labs(
     title = "Dexterity Scores by Cognition Score and Sex ",
     x = "Mean Simple Reaction Time",
-    y = "Building Test Score",
-    fill = "Dominant Hand"
-  ) +
+    y = "Building Test Score") +
   geom_smooth(method="lm", se=FALSE)+
   theme_minimal()
 ```
