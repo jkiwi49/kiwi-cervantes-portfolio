@@ -1,6 +1,5 @@
 ---
 title: "part_1"
-format: html
 ---
 
 Data Description

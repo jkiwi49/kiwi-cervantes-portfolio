@@ -1,6 +1,5 @@
 ---
 title: "part_2"
-format: html
 execute:
  echo: false
  warning: false
