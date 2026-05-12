@@ -7,13 +7,13 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: "Home"
+        text: Home
       - href: about.qmd
-        text: "About Me"
+        text: About Me
       - href: kiwi-cervantes-portfolio/part_1.qmd
-        text: "About the Data"
+        text: About the Data
       - href: kiwi-cervantes-portfolio/part_2.qmd
-        text: "Cleaning and Visualizations"
+        text: Cleaning and Visualizations
 
 format:
   html:
