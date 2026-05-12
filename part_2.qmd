@@ -12,6 +12,7 @@ embed-resources: true
 
 library(tidyverse)
 library(janitor)
+library(viridisLite)
  
 ```
 
@@ -107,16 +108,50 @@ Cleaning the data
 >
 > Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.
 
+## Visualization 1
+
+Here is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.
+
 ```{r}
-#| label: making_visualization
+#| label: viz-1
 #| fig-alt: "Scatterplot of Dexterity Building Test scores on the y axis by simple reaction time on the x axis, there are two line of best fits, one for each sex. The two lines are also colored by sex as well as the datapoints being a different shape for each sex"
 #| fig-cap: "Scatterplot of Dexterity by Cognition"
-ggplot(clean_data, aes(x = actual_mean_rt_ms, y = actual_building_test_score, color = sex, shape = sex)) +
+#| fig-width: 6 
+#| fig-height: 4 
+#| fig-align: center
+ggplot(clean_data, aes(x = actual_mean_rt_ms, 
+                       y = actual_building_test_score, 
+                       color = sex, 
+                       shape = sex)) +
   geom_point() +
-  labs(
-    title = "Dexterity Scores by Cognition Score and Sex ",
-    x = "Mean Simple Reaction Time",
-    y = "Building Test Score") +
+  scale_color_brewer(palette="Pastel1")+
+  labs(title = "Dexterity Scores by Cognition Score and Sex ",
+       x = "Mean Simple Reaction Time",
+       y = "Building Test Score") +
   geom_smooth(method="lm", se=FALSE)+
+  theme_minimal()
+```
+
+## Visualization 2
+
+Here is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.
+
+```{r}
+#| label: viz-2
+#| fig-alt: y
+#| fig-cap: s
+#| fig-width: 6 
+#| fig-height: 4 
+#| fig-align: center
+ggplot(clean_data, aes(x = delta_building_test, 
+                       y=sex, 
+                       fill = sex, 
+                       shape = sex)) +
+  geom_violin(alpha=.2)+
+  geom_boxplot(alpha=.9)+
+  scale_fill_brewer(palette="Pastel1")+
+  labs(title = "Dexterity Scores by Sex ",
+       x = "Difference in Practice to Actual Building Test Score",
+       y = "Sex") +
   theme_minimal()
 ```

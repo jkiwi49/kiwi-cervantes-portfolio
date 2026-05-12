@@ -25,6 +25,20 @@
     "href": "part_2.html",
     "title": "part_2",
     "section": "",
-    "text": "Data Cleaning\nCleaning the data\n\nRow Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.\nData Joining: Merged two data sets using participant IDs to combine behavioral and demographic information.\nColumn Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.\n\n\n\n\n\n\nScatterplot of Dexterity by Cognition"
+    "text": "Data Cleaning"
+  },
+  {
+    "objectID": "part_2.html#visualization-1",
+    "href": "part_2.html#visualization-1",
+    "title": "part_2",
+    "section": "Visualization 1",
+    "text": "Visualization 1\nHere is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.\n\n\n\n\n\nScatterplot of Dexterity by Cognition"
+  },
+  {
+    "objectID": "part_2.html#visualization-2",
+    "href": "part_2.html#visualization-2",
+    "title": "part_2",
+    "section": "Visualization 2",
+    "text": "Visualization 2\nHere is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.\n\n\n\n\n\ns"
   }
 ]

@@ -11,9 +11,9 @@ website:
       - href: about.qmd
         text: "About Me"
       - href: part_1.qmd
-        text: "Part 1"
+        text: "About the Data"
       - href: part_2.qmd
-        text: "Part 2"
+        text: "Cleaning and Visualizations"
 
 format:
   html:
