@@ -95,7 +95,7 @@ write.csv(joined, "data_clean/clean_data.csv", row.names = FALSE)
 clean_data <- read_csv("data_clean/clean_data.csv")
 ```
 
-Data Cleaning
+## Data Cleaning  
 
 ```         
 Cleaning the data
@@ -107,7 +107,7 @@ Cleaning the data
 >
 > Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.
 
-## Visualization 1
+## Visualization 1  
 
 Here is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.
 
@@ -131,7 +131,7 @@ ggplot(clean_data, aes(x = actual_mean_rt_ms,
   theme_minimal()
 ```
 
-## Visualization 2
+## Visualization 2  
 
 Here is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.
 

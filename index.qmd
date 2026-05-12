@@ -15,12 +15,12 @@ about:
 Kiwi Cervantes is a Graduating Kinesiology student at [California State University, Monterey Bay]. 
 They have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University.
 
-## Education
+## Education  
 
 California State Monterey Bay | Marina, CA  
 B.S. in Kinesiology | 2023 - 20026
 
-## Experience
+## Experience  
 
 CSUMB Cooperative Learning Center | Anatomy & Physiology Tutor | August 2025 - present
 ```

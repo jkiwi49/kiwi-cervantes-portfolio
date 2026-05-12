@@ -2,7 +2,7 @@
 title: "part_1"
 ---
 
-Data Description
+## Data Description  
 
 ```         
 Identify your data source.
@@ -23,7 +23,7 @@ Identify the research questions you want to answer.
 
 > Does manual dexterity differ by amount of caffeine intake? Does manual dexterity differ by average hours a week exercising? Is manual dexterity influenced by simple reaction time?
 
-Data Visualization
+## Data Visualization  
 
 ```         
 What do you want your final visualizations to look like?
@@ -43,7 +43,7 @@ What is missing from your data or would need to change in your data to create th
 
 > I would need to get rid of nas, and combine different sheets into one big file.
 
-Data Cleaning
+## Data Cleaning  
 
 The answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.
 
