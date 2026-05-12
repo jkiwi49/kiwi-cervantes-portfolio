@@ -10,9 +10,9 @@ website:
         text: Home
       - href: about.qmd
         text: About Me
-      - href: kiwi-cervantes-portfolio/part_1.qmd
+      - href: part_1.qmd
         text: About the Data
-      - href: kiwi-cervantes-portfolio/part_2.qmd
+      - href: part_2.qmd
         text: Cleaning and Visualizations
 
 format:
