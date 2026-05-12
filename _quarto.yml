@@ -6,13 +6,13 @@ website:
   title: "Kiwi Cervantes' ePortfolio"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.html
         text: "Home"
-      - href: about.qmd
+      - href: about.html
         text: "About Me"
-      - href: part_1.qmd
+      - href: part_1.html
         text: "About the Data"
-      - href: part_2.qmd
+      - href: part_2.html
         text: "Cleaning and Visualizations"
 
 format:
