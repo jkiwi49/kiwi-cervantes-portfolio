@@ -2,37 +2,51 @@
   {
     "objectID": "part_2.html",
     "href": "part_2.html",
-    "title": "part_2",
+    "title": "Cleaning and Visualizations",
     "section": "",
     "text": "Cleaning the data\n\nRow Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.\nData Joining: Merged two data sets using participant IDs to combine behavioral and demographic information.\nColumn Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test."
   },
   {
     "objectID": "part_2.html#data-cleaning",
     "href": "part_2.html#data-cleaning",
-    "title": "part_2",
+    "title": "Cleaning and Visualizations",
     "section": "",
     "text": "Cleaning the data\n\nRow Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.\nData Joining: Merged two data sets using participant IDs to combine behavioral and demographic information.\nColumn Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test."
   },
   {
     "objectID": "part_2.html#visualization-1",
     "href": "part_2.html#visualization-1",
-    "title": "part_2",
+    "title": "Cleaning and Visualizations",
     "section": "Visualization 1",
     "text": "Visualization 1\nHere is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.\n\n\n\n\n\nScatterplot of Dexterity by Cognition"
   },
   {
     "objectID": "part_2.html#visualization-2",
     "href": "part_2.html#visualization-2",
-    "title": "part_2",
+    "title": "Cleaning and Visualizations",
     "section": "Visualization 2",
     "text": "Visualization 2\nHere is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.\n\n\n\n\n\ns"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "kiwi-cervantes-portfolio",
+    "title": "Kiwi Cervantes’ Portfolio",
     "section": "",
-    "text": "Kiwi Cervantes is a Graduating Kinesiology student at [California State University, Monterey Bay]. \nThey have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University.\n## Education  \nCalifornia State Monterey Bay | Marina, CA  \nB.S. in Kinesiology | 2023 - 20026\n## Experience  \nCSUMB Cooperative Learning Center | Anatomy & Physiology Tutor | August 2025 - present"
+    "text": "Kiwi Cervantes is a Graduating Kinesiology student at California State University, Monterey Bay. They have just gotten into their desired Graduate Program for their M.S. In Kinesiology at San Francisco State University."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Kiwi Cervantes’ Portfolio",
+    "section": "Education",
+    "text": "Education\nCalifornia State Monterey Bay | Marina, CA\nB.S. in Kinesiology | 2023 - 2026"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Kiwi Cervantes’ Portfolio",
+    "section": "Experience",
+    "text": "Experience\nCSUMB Cooperative Learning Center | Anatomy & Physiology Tutor | August 2025 - present"
   },
   {
     "objectID": "about.html",
@@ -44,29 +58,15 @@
   {
     "objectID": "part_1.html",
     "href": "part_1.html",
-    "title": "part_1",
+    "title": "The Data",
     "section": "",
     "text": "Identify your data source.\n\nObservational collected data from local Monterey and CSUMB Esports tournaments, CSUMB library, and other non-random methods. Subjects voluntarily participated in a Purdue Pegboard test to measure dexterity, Psytool kit tests to assess simple reaction time, Go/No go test for impulsivity, and Poesner Cueing test for spatial orientation. Additionally, participants responded to a questionnaire describing hours of sleep per week, caffeine intake, and other items of interest.\n\nDescribe your data, including variables and data types.\n\nHealth and Lifestyle: Sex - Male or Female\nAge_years Gaming_hr_week_ratio - Hours per week gaming Caffeine_Intake_mg_d - Reported caffeine intake (mg) per day Sleep_hrs - Typical hours of sleep per night Exercise_hours_week - Hours per week exercising Difference (Actual mean - Practice mean) of Cognitive measure test in milliseconds (ms): SR_ROC_Mean_RT - Simple Reaction test ROC_Mean_Go_RT - Go/No Go test ROC_Mean_Valid_Cue_RT_ms - Poesner Cueing test (valid cue) PP_ROC_Building_Test - Purdue Pegboard test Level of Gaming/Type: Gaming (measured as Non-Gamer, Casual-SB, Elite-SB, FPS, MOBA) Abbreviations: SB (Super Smash Bros Ultimate), FPS (First Person Shooter), MOBA (multiplayer online battle arena)\n\nIdentify the research questions you want to answer.\n\nDoes manual dexterity differ by amount of caffeine intake? Does manual dexterity differ by average hours a week exercising? Is manual dexterity influenced by simple reaction time?"
   },
   {
     "objectID": "part_1.html#data-description",
     "href": "part_1.html#data-description",
-    "title": "part_1",
+    "title": "The Data",
     "section": "",
     "text": "Identify your data source.\n\nObservational collected data from local Monterey and CSUMB Esports tournaments, CSUMB library, and other non-random methods. Subjects voluntarily participated in a Purdue Pegboard test to measure dexterity, Psytool kit tests to assess simple reaction time, Go/No go test for impulsivity, and Poesner Cueing test for spatial orientation. Additionally, participants responded to a questionnaire describing hours of sleep per week, caffeine intake, and other items of interest.\n\nDescribe your data, including variables and data types.\n\nHealth and Lifestyle: Sex - Male or Female\nAge_years Gaming_hr_week_ratio - Hours per week gaming Caffeine_Intake_mg_d - Reported caffeine intake (mg) per day Sleep_hrs - Typical hours of sleep per night Exercise_hours_week - Hours per week exercising Difference (Actual mean - Practice mean) of Cognitive measure test in milliseconds (ms): SR_ROC_Mean_RT - Simple Reaction test ROC_Mean_Go_RT - Go/No Go test ROC_Mean_Valid_Cue_RT_ms - Poesner Cueing test (valid cue) PP_ROC_Building_Test - Purdue Pegboard test Level of Gaming/Type: Gaming (measured as Non-Gamer, Casual-SB, Elite-SB, FPS, MOBA) Abbreviations: SB (Super Smash Bros Ultimate), FPS (First Person Shooter), MOBA (multiplayer online battle arena)\n\nIdentify the research questions you want to answer.\n\nDoes manual dexterity differ by amount of caffeine intake? Does manual dexterity differ by average hours a week exercising? Is manual dexterity influenced by simple reaction time?"
-  },
-  {
-    "objectID": "part_1.html#data-visualization",
-    "href": "part_1.html#data-visualization",
-    "title": "part_1",
-    "section": "Data Visualization",
-    "text": "Data Visualization\nWhat do you want your final visualizations to look like?\n\nI want a scatterplot for the relation between simple reaction time and dexterity, and side by side bar plots and violin plots to compare between games and skills\n\nWhat do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?\n\nI plan to highlight the different games that are included, I will do this by assigning each game a different color to keep comparisons cohesive and easy to follow.\n\nWhat is missing from your data or would need to change in your data to create these visualizations?\n\nI would need to get rid of nas, and combine different sheets into one big file."
-  },
-  {
-    "objectID": "part_1.html#data-cleaning",
-    "href": "part_1.html#data-cleaning",
-    "title": "part_1",
-    "section": "Data Cleaning",
-    "text": "Data Cleaning\nThe answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.\nDo you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?\n\nYes some variables need to have parts of their information to make analyses possible\n\nDo you need to deal with any missing data, especially missing data coded other than NA?\n\nYes, missing data and rows\n\nDo you need to filter your data? How?\n\nOther than removing data no\n\nDo you need to create any new variables? What variables? How?\n\nNo\n\nDo you need to add new data (join) to your data? What data? How?\\\n\nNot from anything that isn’t already included\n\nDo you need pivot your data in any way? Why? How?\n\nNo\n\nDo you need to summarize any of the variables? Which ones? How?\n\nNo\n\nWhat other aspects of your data need to be “fixed” in order to make your data visualizations?\n\nI need to join data points from different sheets in order have it all on one page\n\nMost will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.\nAre there any variables you can exclude from your data?\n\nYes there are some unnecessary variables in this dataset."
   }
 ]

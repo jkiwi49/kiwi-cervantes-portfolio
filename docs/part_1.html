@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>part_1 – Kiwi Cervantes’ ePortfolio</title>
+<title>The Data – Kiwi Cervantes’ ePortfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -125,8 +125,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#data-description" id="toc-data-description" class="nav-link active" data-scroll-target="#data-description">Data Description</a></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
   </ul>
 </nav>
     </div>
@@ -135,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">part_1</h1>
+<h1 class="title">The Data</h1>
 </div>
 
 
@@ -154,75 +152,71 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="data-description" class="level2">
 <h2 class="anchored" data-anchor-id="data-description">Data Description</h2>
-<pre><code>Identify your data source.</code></pre>
+<p>Identify your data source.</p>
 <blockquote class="blockquote">
 <p>Observational collected data from local Monterey and CSUMB Esports tournaments, CSUMB library, and other non-random methods. Subjects voluntarily participated in a Purdue Pegboard test to measure dexterity, Psytool kit tests to assess simple reaction time, Go/No go test for impulsivity, and Poesner Cueing test for spatial orientation. Additionally, participants responded to a questionnaire describing hours of sleep per week, caffeine intake, and other items of interest.</p>
 </blockquote>
-<pre><code>Describe your data, including variables and data types.</code></pre>
+<p>Describe your data, including variables and data types.</p>
 <blockquote class="blockquote">
 <p>Health and Lifestyle: Sex - Male or Female<br>
 Age_years Gaming_hr_week_ratio - Hours per week gaming Caffeine_Intake_mg_d - Reported caffeine intake (mg) per day Sleep_hrs - Typical hours of sleep per night Exercise_hours_week - Hours per week exercising Difference (Actual mean - Practice mean) of Cognitive measure test in milliseconds (ms): SR_ROC_Mean_RT - Simple Reaction test ROC_Mean_Go_RT - Go/No Go test ROC_Mean_Valid_Cue_RT_ms - Poesner Cueing test (valid cue) PP_ROC_Building_Test - Purdue Pegboard test Level of Gaming/Type: Gaming (measured as Non-Gamer, Casual-SB, Elite-SB, FPS, MOBA) Abbreviations: SB (Super Smash Bros Ultimate), FPS (First Person Shooter), MOBA (multiplayer online battle arena)</p>
 </blockquote>
-<pre><code>Identify the research questions you want to answer.</code></pre>
+<p>Identify the research questions you want to answer.</p>
 <blockquote class="blockquote">
 <p>Does manual dexterity differ by amount of caffeine intake? Does manual dexterity differ by average hours a week exercising? Is manual dexterity influenced by simple reaction time?</p>
 </blockquote>
-</section>
-<section id="data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
-<pre><code>What do you want your final visualizations to look like?</code></pre>
-<blockquote class="blockquote">
-<p>I want a scatterplot for the relation between simple reaction time and dexterity, and side by side bar plots and violin plots to compare between games and skills</p>
-</blockquote>
-<pre><code>What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?</code></pre>
-<blockquote class="blockquote">
-<p>I plan to highlight the different games that are included, I will do this by assigning each game a different color to keep comparisons cohesive and easy to follow.</p>
-</blockquote>
-<pre><code>What is missing from your data or would need to change in your data to create these visualizations?</code></pre>
-<blockquote class="blockquote">
-<p>I would need to get rid of nas, and combine different sheets into one big file.</p>
-</blockquote>
-</section>
-<section id="data-cleaning" class="level2">
-<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
-<p>The answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.</p>
-<pre><code>Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?</code></pre>
-<blockquote class="blockquote">
-<p>Yes some variables need to have parts of their information to make analyses possible</p>
-</blockquote>
-<pre><code>Do you need to deal with any missing data, especially missing data coded other than NA?</code></pre>
-<blockquote class="blockquote">
-<p>Yes, missing data and rows</p>
-</blockquote>
-<pre><code>Do you need to filter your data? How?</code></pre>
-<blockquote class="blockquote">
-<p>Other than removing data no</p>
-</blockquote>
-<pre><code>Do you need to create any new variables? What variables? How?</code></pre>
-<blockquote class="blockquote">
-<p>No</p>
-</blockquote>
-<pre><code>Do you need to add new data (join) to your data? What data? How?\</code></pre>
-<blockquote class="blockquote">
-<p>Not from anything that isn’t already included</p>
-</blockquote>
-<pre><code>Do you need pivot your data in any way? Why? How?</code></pre>
-<blockquote class="blockquote">
-<p>No</p>
-</blockquote>
-<pre><code>Do you need to summarize any of the variables? Which ones? How?</code></pre>
-<blockquote class="blockquote">
-<p>No</p>
-</blockquote>
-<pre><code>What other aspects of your data need to be “fixed” in order to make your data visualizations?</code></pre>
-<blockquote class="blockquote">
-<p>I need to join data points from different sheets in order have it all on one page</p>
-</blockquote>
-<p>Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.</p>
-<pre><code>Are there any variables you can exclude from your data?</code></pre>
-<blockquote class="blockquote">
-<p>Yes there are some unnecessary variables in this dataset.</p>
-</blockquote>
+<!-- ## Data Visualization   -->
+<!-- ```          -->
+<!-- What do you want your final visualizations to look like? -->
+<!-- ``` -->
+<!-- > I want a scatterplot for the relation between simple reaction time and dexterity, and side by side bar plots and violin plots to compare between games and skills -->
+<!-- ```          -->
+<!-- What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that? -->
+<!-- ``` -->
+<!-- > I plan to highlight the different games that are included, I will do this by assigning each game a different color to keep comparisons cohesive and easy to follow. -->
+<!-- ```          -->
+<!-- What is missing from your data or would need to change in your data to create these visualizations? -->
+<!-- ``` -->
+<!-- > I would need to get rid of na's, and combine different sheets into one big file. -->
+<!-- ## Data Cleaning   -->
+<!-- The answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set. -->
+<!-- ```          -->
+<!-- Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values? -->
+<!-- ``` -->
+<!-- > Yes some variables need to have parts of their information to make analyses possible -->
+<!-- ```          -->
+<!-- Do you need to deal with any missing data, especially missing data coded other than NA? -->
+<!-- ``` -->
+<!-- > Yes, missing data and rows -->
+<!-- ```          -->
+<!-- Do you need to filter your data? How? -->
+<!-- ``` -->
+<!-- > Other than removing data no -->
+<!-- ```          -->
+<!-- Do you need to create any new variables? What variables? How? -->
+<!-- ``` -->
+<!-- > No -->
+<!-- ```          -->
+<!-- Do you need to add new data (join) to your data? What data? How?\ -->
+<!-- ``` -->
+<!-- > Not from anything that isn't already included -->
+<!-- ```          -->
+<!-- Do you need pivot your data in any way? Why? How? -->
+<!-- ``` -->
+<!-- > No -->
+<!-- ```          -->
+<!-- Do you need to summarize any of the variables? Which ones? How? -->
+<!-- ``` -->
+<!-- > No -->
+<!-- ```          -->
+<!-- What other aspects of your data need to be “fixed” in order to make your data visualizations? -->
+<!-- ``` -->
+<!-- > I need to join data points from different sheets in order have it all on one page -->
+<!-- Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above. -->
+<!-- ```          -->
+<!-- Are there any variables you can exclude from your data? -->
+<!-- ``` -->
+<!-- > Yes there are some unnecessary variables in this dataset. -->
 
 
 </section>
