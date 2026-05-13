@@ -1,5 +1,6 @@
 ---
-title: "Kiwi Cervantes' Portfolio"
+title: "Kiwi Cervantes"
+image: kiwi-cervantes.jpg
 about:
   template: jolla
   links:
