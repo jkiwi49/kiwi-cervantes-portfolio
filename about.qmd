@@ -2,4 +2,8 @@
 title: "About"
 ---
 
-Hi I am Kiwi Cervantes, I am a senior kinesiology major with a statistics minor. I am taking stats 210 as part of my minor.
+Hi, my name is Kiwi Cervantes. I am a senior Kinesiology major at California State University, Monterey Bay with a concentration in Exercise Science and a minor in Statistics. I am also an ACSM Certified Exercise Physiologist and a CRLA Level 2 Certified Advanced Tutor.
+
+My academic interests connect exercise science, statistics, and research. Through my Statistics minor, I have developed skills in data visualization, statistical computing with R, nonparametric statistics, and generalized linear models. I also work as a Statistics Tutor and Anatomy and Physiology Mentor Tutor.
+
+I am currently involved in undergraduate research through CSUMB’s Undergraduate Research Opportunity Center as a Koret Scholar. My research experience includes assisting with a study on esports athletes by collecting dexterity, cognitive, and cardiovascular data. This project has helped me apply my interests in kinesiology, statistics, and data analysis to real research questions.

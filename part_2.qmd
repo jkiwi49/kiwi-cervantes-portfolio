@@ -97,24 +97,20 @@ clean_data <- read_csv("data_clean/clean_data.csv")
 
 ## Data Cleaning  
 
-```         
-Cleaning the data
-```
+Row Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.
 
-> Row Filtering: Removed non-participant rows (e.g., “Mean”, “SD”, summary labels) to ensure only valid observations were included.
->
-> Data Joining: Merged two data sets using participant IDs to combine behavioral and demographic information.
->
-> Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.
+Data Joining: Merged two data sets using participant IDs to combine behavioral and demographic information.
+
+Column Selection: Dropped unnecessary columns (e.g., extra “x#” variables and personal identifiers) and retained only relevant variables up to delta_building_test.
 
 ## Visualization 1  
 
-Here is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.
+This visualization shows how manual dexterity scores relate to simple reaction time. Each point represents one participant. The horizontal axis shows the participant’s average simple reaction time, while the vertical axis shows their Building Test score, which measures manual dexterity. Participants are separated by sex using different colors and shapes. A trend line is shown for each sex group to make it easier to compare whether the relationship between reaction time and dexterity looks similar or different across groups.
 
 ```{r}
 #| label: viz-1
-#| fig-alt: "Scatterplot of Dexterity Building Test scores on the y axis by simple reaction time on the x axis, there are two line of best fits, one for each sex. The two lines are also colored by sex as well as the datapoints being a different shape for each sex"
-#| fig-cap: "Scatterplot of Dexterity by Cognition"
+#| fig-alt: "Scatterplot showing the relationship between average simple reaction time and Building Test scores, a measure of manual dexterity. Each point represents one participant. The horizontal axis shows mean simple reaction time, and the vertical axis shows Building Test score. Participants are grouped by sex using different colors and point shapes. A separate trend line is shown for each sex group, allowing viewers to compare whether manual dexterity scores tend to increase, decrease, or stay about the same as reaction time changes, and whether that pattern differs by sex."
+#| fig-cap: "Manual dexterity scores by simple reaction time and sex."
 #| fig-width: 6 
 #| fig-height: 4 
 #| fig-align: center
@@ -133,12 +129,12 @@ ggplot(clean_data, aes(x = actual_mean_rt_ms,
 
 ## Visualization 2  
 
-Here is a description of the first visualization. I want to describe what the visualization shows to a general audience. I do not want to see any code or technical terms. I want to be able to read this and understand what the visualization shows. I also want to see a caption and alt text for the visualization. The caption should be a short description of the visualization and the alt text should be a longer description of the visualization. The alt text should be descriptive enough that someone who is blind could understand what the visualization shows.
+This visualization compares how manual dexterity scores changed from the practice test to the actual test for each sex group. The horizontal axis shows the difference between a person’s practice and actual Building Test scores, while the vertical axis separates participants by sex. The shape of each group shows how spread out the score differences are. Wider areas mean more participants had score differences in that range. The box in the middle shows the typical range of score differences for each group. Overall, this visualization helps compare whether one sex group tended to have larger changes in dexterity performance or more variation in scores than the other.
 
 ```{r}
 #| label: viz-2
-#| fig-alt: y
-#| fig-cap: s
+#| fig-alt: "Visualization comparing the difference between practice and actual Building Test scores across sex groups. The horizontal axis shows the change in manual dexterity score from the practice test to the actual test. The vertical axis separates the results by sex. Each sex group is shown with a shaded distribution shape and a box in the center. Wider parts of the shaded shape indicate score differences that were more common among participants in that group. The box shows the middle range of score differences, making it easier to compare the typical change and overall spread of scores between sex groups."
+#| fig-cap: "Score of practice to actual manual dexterity scores by sex."
 #| fig-width: 6 
 #| fig-height: 4 
 #| fig-align: center

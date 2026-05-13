@@ -16,7 +16,7 @@ Describe your data, including variables and data types.
 Identify the research questions you want to answer.
 
 
-> Does manual dexterity differ by amount of caffeine intake? Does manual dexterity differ by average hours a week exercising? Is manual dexterity influenced by simple reaction time?  
+> Is manual dexterity related to simple reaction time? Does the relationship between manual dexterity and simple reaction time differ by sex? Does the difference between practice and actual manual dexterity scores differ by sex?
 
 <!-- ## Data Visualization   -->
 
